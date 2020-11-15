@@ -8,26 +8,25 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Home', page: '/' },
 ]
 
-const ogImageUrl = 'https://notion-blog.now.sh/og-image.png'
+const defaultOgImageUrl = 'https://blog.gotch.work/og-image.png'
 
-export default ({ pageTitle = '' }) => {
+export default ({ pageTitle = '', ogImageUrl = '' }) => {
   const { pathname } = useRouter()
   const siteName = 'GW'
+  const pageName = `${pageTitle ? `${pageTitle} |` : ''} ${siteName}`
   return (
     <header className={styles.header}>
       <Head>
-        <title>
-          {pageTitle ? `${pageTitle} |` : ''} {siteName}
-        </title>
+        <title>{pageName}</title>
         <meta
           name="description"
           content="An example Next.js site using Notion for the blog"
         />
-        <meta name="og:title" content="GW" />
+        <meta name="og:title" content={pageName} />
         <meta property="og:image" content={ogImageUrl} />
-        <meta name="twitter:site" content="@_ijjk" />
+        <meta name="twitter:site" content="@tofuaaa" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="twitter:image" content={ogImageUrl || defaultOgImageUrl} />
       </Head>
       <ul>
         {navItems.map(({ label, page, link }) => (
