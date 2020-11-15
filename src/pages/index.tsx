@@ -67,14 +67,14 @@ export default ({ posts = [], preview }) => {
           return (
             <div className={blogStyles.postPreview} key={post.Slug}>
               <h3>
-                <Link href="/posts/[slug]" as={getBlogLink(post.Slug)}>
-                  <div className={blogStyles.titleContainer}>
-                    {!post.Published && (
-                      <span className={blogStyles.draftBadge}>Draft</span>
-                    )}
+                <div className={blogStyles.titleContainer}>
+                  {!post.Published && (
+                    <span className={blogStyles.draftBadge}>Draft</span>
+                  )}
+                  <Link href="/posts/[slug]" as={getBlogLink(post.Slug)}>
                     <a>{post.Page}</a>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </h3>
               {post.Authors.length > 0 && (
                 <div className="authors">By: {post.Authors.join(' ')}</div>
